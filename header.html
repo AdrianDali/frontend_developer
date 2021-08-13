@@ -4,37 +4,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400&display=swap" rel="stylesheet">
+
     <title>Header</title>
 </head>
 <!--body margin 0px quita todo el borde-->
 <style>
     
-    body {
+    .body {
         margin: 0px;
+       background-color: w;
+       font-family: 'Mulish', sans-serif;
     }
-    header {
-        /*background-color: #21C08B*/
-        background-color: #ffffff;
-background-image: linear-gradient(113deg, #ffffff 0%, #000000 100%);
-
+    .header {
+       /* background-color: #21C08B;*/
+       
         width: 100%;
-        height: 80px;
-        
+        height: 80px; 
+        display: flex;
+        justify-content: space-between;
+        align-items:  center;
     }
-    
-    header img {
+    .header__img {
         width: 60px;
         margin-top: 10px;
-        margin-left: 10px;
+        margin-left: 10px;   
+    }
+    .header__menu{
+        margin-right: 40px;
+    }
+    .header__menu ul{
+        display: none;
+        list-style: none;
+        padding: 0px;
+        position: absolute;
+        width: 100px; 
+        text-align: right;
+        margin: 0px 0px 0px -14px;
+    }
+    .header__menu:hover ul, ul:hover{
+        display: block;
+    }
+    .header__menu li {
+        margin: 10px 0px;
         
     }
+    .header__menu li a{
+        color: black;
+        text-decoration: none;
+    }
+    .header__menu li a:hover{
+        text-decoration: underline;
+    }
+    .header__menu--profile{
+        margin-right: 8px;
+        
+        display: flex;
+        align-items: center;
+    }
+    .header__menu--profile img{
+        margin-right: 8px;
+        width: 40px;
+    }
+    .header__menu--profile p{
+        margin: 0px;
+        
+    }
+    .main{
+        height: 300px;
+
+    }
+    .main__title {
+        color: black;
+        font: size 25px;
+    }
+    .input {
+        background-color: rgba(255, 255, 255, 0.1); 
+        border: 2px solid black;
+        border-radius: 25px;
+        color: black;
+        font-family: 'Mulish', sans-serif;
+        font: size 16px;
+        height: 30px;
+        padding: 0px 20px;
+        width: 70%
+    }
+    ::placeholder{
+        color: black;
+    }
 </style>
-<body>
-    <header>
+<body class="body">
+    <header class="header">
         <!--<img src="https://raw.githubusercontent.com/platzi/PlatziVideo/feature/react/src/assets/static/logo-platzi-video-BW2.png" 
             alt="platzilogo">-->
-       <img src= "imagenes/calavera-y-huesos.png" alt="logo_header">
+       <img class="header__img"src= "imagenes/calavera-y-huesos.png" alt="logo_header">
+       <div class = "header__menu">
+       <div class="header__menu--profile">
+           <img src="imagenes/icons8-esqueleto-50.png" alt="Users">
+           <p>perfil</p>
+       </div>
+       <ul>
+           <li><a href="/">Cuenta</a></li>
+           <li><a href="/">Cerrar Sesion</a></li>
+           
+       </ul>
+    </div>
+       
 </header>
+
+<section class="main">
+    <h2 class="main__title">
+        Que quieres ver hoy?
+        <input class="input" type="text" placeholder="Buscar...">
+    </h2>
+</section>
     
 </body>
 </html>
