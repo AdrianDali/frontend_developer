@@ -15,27 +15,29 @@
   </head>
   
   <style>
-    .body{
-      margin: 0;
-      background-color: white;
+  .body {
+      margin: 0px;
+      background-color: #ebebeb;
       font-family: "Mulish", sans-serif;
     }
-    .header{
+    .header {
+      /* background-color: #21C08B;*/
+
       width: 100%;
       height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .header__img{
+    .header__img {
       width: 60px;
       margin-top: 10px;
       margin-left: 10px;
     }
-    .header__menu{
+    .header__menu {
       margin-right: 40px;
     }
-    .header__menu ul{
+    .header__menu ul {
       display: none;
       list-style: none;
       padding: 0px;
@@ -44,41 +46,43 @@
       text-align: right;
       margin: 0px 0px 0px -14px;
     }
-    .header__menu:hover ul ul:hover{
+    .header__menu:hover ul,
+    ul:hover {
       display: block;
     }
-    .header__menu li{
-      margin-top:10px 0px 0px 0px;
+    .header__menu li {
+      margin: 10px 0px;
     }
-    .header__menu li a{
+    .header__menu li a {
       color: black;
       text-decoration: none;
     }
-    .header__menu li a:hover{
+    .header__menu li a:hover {
       text-decoration: underline;
     }
-    .header__menu--profile{
-      margin-top: 8px;
+    .header__menu--profile {
+      margin-right: 8px;
+
       display: flex;
       align-items: center;
     }
-    /*Reajustar el tamano de la imagen y un margen a la 
-    derecha */
-    .header__menu--profile img{
+    .header__menu--profile img {
       margin-right: 8px;
       width: 40px;
     }
-    .header__menu--profile p{
+    .header__menu--profile p {
       margin: 0px;
     }
-    .main{
-      height: 300px;
+    .main {
+      height: 140px;
+      margin-top: 50px ;
+      margin-left: 30px;
     }
-    .main__title{
+    .main__title {
       color: black;
-      font-size: 25px;
+      font: size 25px;
     }
-    .input{
+    .input {
       background-color: rgba(255, 255, 255, 0.1);
       border: 2px solid black;
       border-radius: 25px;
@@ -89,8 +93,88 @@
       padding: 0px 20px;
       width: 70%;
     }
-    ::placeholder{
+    ::placeholder {
       color: black;
+    }
+    
+    .carousel{
+        width: 100%;
+        overflow: scroll;
+        padding: 30px;
+        padding-top: 65px;
+        position: relative;
+    }
+    .carousel__container{
+        white-space: nowrap;
+        margin: 0px 0px;
+        padding-bottom:  10px;
+
+    }
+    .carousel-item{
+        background-color: #e0e0e0;
+        width: 200px;
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-right: 10px;
+        display: inline-block;
+        cursor: pointer;
+        transition:  450ms all;
+        transform-origin: center left;
+        position: relative;
+    }
+    .carousel-item:hover ~ .carousel-item  {
+        transform:  translate3d(100px,0,0);
+        
+    }
+    .carousel__container:hover .carousel-item {
+       opacity: 0.3; 
+    }
+    .carousel__container:hover  .carousel-item:hover  {
+        opacity: 1;
+        transform: scale(1.5);
+        
+    }
+    .carousel-item__img{
+        width: 200px;
+        height: 250px;
+        /*objetc-fit: cover; es para ajustar bien la foto*/
+        object-fit: cover;
+    }
+    .carousel-item__details{
+        background: linear-gradient(to top, rgba(0,0,0,0.9)0%, rgba(0,0,0,0)100%);
+        font-size: 10px;
+        opacity: 0;
+        transition: 450 ms opacity;
+        padding: 10px 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column
+    }
+    .carousel-item__details:hover{
+        opacity: 1;
+        color: white;
+    }
+    .carousel-item__icon{
+        width: 25px;
+        height: 25px;
+    }
+    .carousel-item__details--title, .carousel-item__details--subtitle  {
+    position: relative;
+    top: 100;
+    color: #ffffff;
+    font-size: 16px;
+    }
+    .carousel-item__details p{
+        margin: 0;
+    }
+    .carousel-item__details img{
+        height: 25px;
     }
 
   </style>
@@ -98,24 +182,97 @@
   
   <body class="body">
     <header class="header">
-      <img class="header__img" src="imagenes/calavera-y-huesos.png" alt="Header" />
-        <div class="header__menu">
-            <div class="header__menu--profile">
-                <img src="imagenes/icons8-esqueleto-50.png" alt="Perfil" />
-                <p>perfil</p>
-                <ul>
-                    <li><a href="/">Cuenta</a></li>
-                    <li><a href="/">Cerrar sesion</a></li>
-                </ul>
-
-            </div>
+      <!--<img src="https://raw.githubusercontent.com/platzi/PlatziVideo/feature/react/src/assets/static/logo-platzi-video-BW2.png" 
+            alt="platzilogo">-->
+      <img
+        class="header__img"
+        src="imagenes/calavera-y-huesos.png"
+        alt="logo_header"
+      />
+      <div class="header__menu">
+        <div class="header__menu--profile">
+          <img src="imagenes/esqueleto.png" alt="Users" />
+          <p>perfil</p>
         </div>
+        <ul>
+          <li><a href="/">Cuenta</a></li>
+          <li><a href="/">Cerrar Sesion</a></li>
+        </ul>
+      </div>
     </header>
+
     <section class="main">
-      <h2 class="main__title">Que producto buscabas?
-      <input class="input"  type="text" placeholder="Buscar...">
-    </h2>
+      <h2 class="main__title">
+        Que quieres comprar hoy?
+        <input class="input" type="text" placeholder="Buscar..." />
+      </h2>
     </section>
     
+    <section class="carousel">
+
+      <div class="carousel__container">
+          <div class="carousel-item">
+              <img class="carousel-item__img" src="imagenes/KIT01.png" alt="BlackANDWhite">
+              <div class="carousel-item__details">
+                  <div>
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/483/483054.png" alt="Play">
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/1828/1828919.png" alt="Plus">
+                  </div>
+                  <p class="carousel-item__details--title">kit01  </p>
+                  <p class="carousel-item__details--subtitle">kit lion</p>
+              </div>
+              
+          </div>
+          <div class="carousel-item">      
+              <img class="carousel-item__img" src="imagenes/KIT05.png" alt="BlackANDWhite">
+              <div class="carousel-item__details">
+                  <div>
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/483/483054.png" alt="Play">
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/1828/1828919.png" alt="Plus">
+                  </div>
+                  <p class="carousel-item__details--title">Titulo descriptivo  </p>
+                  <p class="carousel-item__details--subtitle">2019 16+ 113 minutos</p>
+              </div>
+                </div>
+          <div class="carousel-item"> 
+              <img class="carousel-item__img" src="imagenes/KIT03.png" alt="BlackANDWhite">
+              <div class="carousel-item__details">
+                  <div>
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/483/483054.png" alt="Play">
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/1828/1828919.png" alt="Plus">
+                  </div>
+                  <p class="carousel-item__details--title">Titulo descriptivo  </p>
+                  <p class="carousel-item__details--subtitle">2019 16+ 113 minutos</p>
+              </div> 
+          </div>
+          <div class="carousel-item"> 
+              <img class="carousel-item__img" src="imagenes/KIT04.png" alt="BlackANDWhite">
+              <div class="carousel-item__details">
+                  <div>
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/483/483054.png" alt="Play">
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/1828/1828919.png" alt="Plus">
+                  </div>
+                  <p class="carousel-item__details--title">Titulo descriptivo  </p>
+                  <p class="carousel-item__details--subtitle">2019 16+ 113 minutos</p>
+              </div> 
+          </div>
+          <div class="carousel-item"> 
+              <img class="carousel-item__img" src="imagenes/KIT02.png" alt="BlackANDWhite">
+              <div class="carousel-item__details">
+                  <div>
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/483/483054.png" alt="Play">
+                      <img class = "carousel-item__icon" src="https://image.flaticon.com/icons/png/512/1828/1828919.png" alt="Plus">
+                  </div>
+                  <p class="carousel-item__details--title">Titulo descriptivo  </p>
+                  <p class="carousel-item__details--subtitle">2019 16+ 113 minutos</p>
+              </div> 
+          </div>
+      </div>
+
+  </section>
+
+
+
+
   </body>
 </html>
